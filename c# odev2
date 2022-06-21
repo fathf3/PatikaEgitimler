@@ -1,0 +1,166 @@
+# 1.
+
+            int[] sayilar = new int[20];
+            ArrayList asalSayilar = new ArrayList();
+            ArrayList asalOlmayanlar = new ArrayList();
+            int kontrol = 0;
+            for (int i =0; i<20; i++)
+            {
+                int sayi = 0;
+                var input = Console.ReadLine();
+                try
+                {   
+                    sayi = int.Parse(input);
+                    if (sayi > 0)
+                    {
+                        sayilar[i] = sayi;
+                    }
+                    else
+                    {
+                        Console.WriteLine("pozitif sayi giriniz");
+                        i = i - 1;
+                    }
+                }
+                catch (Exception)
+                {
+                    Console.WriteLine("Lutfen Pozitif Sayi Giriniz");
+                    i = i - 1;
+                }
+            }
+
+            Console.WriteLine("----------------------");
+           
+            foreach(int item in sayilar)
+            {
+                if (item == 1 || item == 0)
+                {
+                    asalOlmayanlar.Add(item);
+
+                }
+                else {
+                    for (int i = 2; i < item / 2; i++)
+                    {
+                        if (item%i == 0)
+                        {
+                            kontrol++;
+                            break;
+                        }
+                    }
+
+                    if (kontrol != 0)
+                    {
+                        asalOlmayanlar.Add(item);
+                        kontrol = 0;
+                    }
+
+                    else
+                    {
+                        asalSayilar.Add(item);
+                        
+                    }
+
+                }
+               
+            }
+            Console.WriteLine("Asal Sayilar");
+            asalSayilar.Sort();
+            asalSayilar.Reverse();
+            int asalToplam = 0;
+            Console.WriteLine(asalSayilar.Count + " adet asal sayi var");
+            foreach (int item in asalSayilar) 
+            {
+                Console.WriteLine(item);
+                asalToplam += item;
+
+            }
+
+            Console.WriteLine("Asal Ort : " + asalToplam / asalOlmayanlar.Count);
+
+
+            Console.WriteLine("\n \n Asal  Olmayan Sayilar");
+            asalOlmayanlar.Sort();
+            asalOlmayanlar.Reverse();
+            Console.WriteLine(asalOlmayanlar.Count + " adet asal olmayan sayi var");
+            int toplam = 0;
+            foreach (int item in asalOlmayanlar) 
+            {
+                Console.WriteLine(item);
+                toplam += item;
+            }
+            Console.WriteLine( "Asal olmayan Ort : " +toplam/asalOlmayanlar.Count);
+
+        }
+        
+        
+        
+# 2.
+
+ int[] sayilar = new int[10];
+            for (int i = 0; i < 10; i++)
+            {
+                int sayi = 0;
+                var input = Console.ReadLine();
+                try
+                {
+                    sayilar[i]  = int.Parse(input);
+
+                }
+                catch (Exception)
+                {
+                    Console.WriteLine("Lutfen  Sayi Giriniz");
+                    i -= 1;
+                }
+            }
+
+            Console.WriteLine("*****************************");
+
+            Array.Sort(sayilar);
+            int kToplam = 0;
+            Console.WriteLine("En Kucuk 3 Sayi");
+            for (int i=0; i<3; i++)
+            {
+                
+                Console.WriteLine(sayilar[i]);
+                kToplam += sayilar[i];
+               
+            }
+            int kSayiOrt = kToplam / 3;
+            Console.WriteLine("Kucuk sayi ort : " + kSayiOrt);
+
+            Array.Reverse(sayilar);
+            Console.WriteLine("En Buyuk 3 Sayi");
+            int bToplam = 0;
+            for (int i = 0; i < 3; i++)
+            {
+                
+                Console.WriteLine(sayilar[i]);
+                bToplam += sayilar[i];
+            }
+            int bSayiOrt = bToplam / 3;
+            Console.WriteLine("Buyuk sayi ort : " + bSayiOrt);
+
+            Console.WriteLine("Ortalama Toplamlari : " + (kSayiOrt+bSayiOrt));
+            
+            
+# 3.
+
+ string cumle =  Console.ReadLine();
+            char[] sesliHarfler = { 'a', 'e', 'i', 'o', 'u' };
+
+            char[] sesliHarfDizi = new char[25];
+            int i = 0;
+            foreach (char item in cumle) { 
+                i++;
+            foreach (char sesliHarf in sesliHarfler) { 
+                if (item == sesliHarf) {
+                        sesliHarfDizi[i] = item;
+                    }
+                        
+                }
+            }
+
+            Array.Sort(sesliHarfDizi);
+            foreach (var item in sesliHarfDizi)
+                Console.WriteLine(item);
+
+        }
